@@ -1,7 +1,7 @@
-const arg = require('arg');
 
 class ArgParser {
-    constructor() {
+    constructor(arg) {
+        this._arg = arg;
         this._opts = {};
         this._names = {};
         this._helpText = null;
@@ -30,7 +30,7 @@ class ArgParser {
     parse(argv = null) {
         let config = { permissive: true };
         if(argv !== null) { config.argv = argv; }
-        let options = arg(this._opts, config);
+        let options = this._arg(this._opts, config);
         let rv = {};
         Object.keys(options).forEach(k => {
             rv[k] = options[k];
@@ -50,8 +50,6 @@ class ArgParser {
     }
 }
 
-const argParser = () => new ArgParser();
-
-module.exports = {
-    argParser
-};
+module.exports = (arg) => {
+    return { argParser: () => new ArgParser(arg) };
+}
