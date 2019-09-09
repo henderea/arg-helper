@@ -1,6 +1,6 @@
 {
   "name": "@henderea/arg-helper",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A utility wrapper around the arg command-line parser",
   "main": "src/index.js",
   "repository": "git@github.com:henderea/arg-helper.git",
