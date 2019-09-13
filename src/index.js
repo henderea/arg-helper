@@ -19,9 +19,18 @@ class ArgParser {
         }
         return this;
     }
+    flags(name, ...names) {
+        let type = names.pop();
+        return this.flag(name, ...names, [type]);
+    }
 
     string(name, ...names) { return this.flag(name, ...names, String); }
+    strings(name, ...names) { return this.flags(name, ...names, String); }
     bool(name, ...names) { return this.flag(name, ...names, Boolean); }
+    bools(name, ...names) { return this.flags(name, ...names, Boolean); }
+    number(name, ...names) { return this.flag(name, ...names, Number); }
+    numbers(name, ...names) { return this.flags(name, ...names, Number); }
+    count(name, ...names) { return this.flag(name, ...names, this._arg.COUNT); }
     help(helpText, ...names) {
         this._helpText = helpText;
         return this.bool('help', ...names);

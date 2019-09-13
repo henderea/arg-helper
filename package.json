@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A utility wrapper around the arg command-line parser",
   "main": "src/index.js",
+  "types": "src/index.d.ts",
   "repository": "git@github.com:henderea/arg-helper.git",
   "author": "Eric Henderson <henderea@gmail.com>",
   "license": "MIT",
