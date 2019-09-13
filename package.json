@@ -1,6 +1,6 @@
 {
   "name": "@henderea/arg-helper",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A utility wrapper around the arg command-line parser",
   "main": "src/index.js",
   "types": "src/index.d.ts",
