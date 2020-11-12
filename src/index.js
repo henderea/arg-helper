@@ -1,3 +1,4 @@
+const fs = require('fs');
 
 class ArgParser {
     constructor(arg) {
@@ -5,6 +6,7 @@ class ArgParser {
         this._opts = {};
         this._names = {};
         this._helpText = null;
+        this._packageJsonFile = null;
     }
 
     flag(name, ...names) {
@@ -35,6 +37,10 @@ class ArgParser {
         this._helpText = helpText;
         return this.bool('help', ...names);
     }
+    version(packageJsonFile, ...names) {
+        this._packageJsonFile = packageJsonFile;
+        return this.bool('version', ...names);
+    }
 
     parse(argv = null) {
         let config = { permissive: true };
@@ -50,6 +56,14 @@ class ArgParser {
         if(this._helpText && rv.help) {
             console.log(this._helpText);
             process.exit(0);
+        }
+        if(rv.version && this._packageJsonFile && fs.existsSync(this._packageJsonFile)) {
+            const packageJson = JSON.parse(fs.readFileSync(this._packageJsonFile));
+            const version = packageJson.version;
+            if(version) {
+                console.log(version);
+                process.exit(0);
+            }
         }
         return rv;
     }

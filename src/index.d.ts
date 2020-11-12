@@ -6,8 +6,6 @@ declare namespace argHelper {
     }
 
     export interface ArgParser {
-        private constructor();
-
         flag(name: string, ...names: Array<string | Function>): this;
         flags(name: string, ...names: Array<string | Function>): this;
         string(name: string, ...names: Array<string>): this;
@@ -18,6 +16,7 @@ declare namespace argHelper {
         numbers(name: string, ...names: Array<string>): this;
         count(name: string, ...names: Array<string>): this;
         helpText(helpText: string, ...names: Array<string>): this;
+        version(packageJsonFile: string, ...names: Array<string>): this;
         parse(argv?: Array<any> | null): Map<any>;
         readonly argv: Map<any>;
     }
