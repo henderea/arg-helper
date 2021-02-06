@@ -8,7 +8,7 @@
   "author": "Eric Henderson <henderea@gmail.com>",
   "license": "MIT",
   "peerDependencies": {
-    "arg": "4.x"
+    "arg": "5.x"
   },
   "files": [
     "src/**/*"
