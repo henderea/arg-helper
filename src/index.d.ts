@@ -16,6 +16,7 @@ declare namespace argHelper {
         numbers(name: string, ...names: Array<string>): this;
         count(name: string, ...names: Array<string>): this;
         helpText(helpText: string, ...names: Array<string>): this;
+        findVersion(callerPath: string, ...names: Array<string>): this;
         version(packageJsonFile: string, ...names: Array<string>): this;
         parse(argv?: Array<any> | null): Map<any>;
         readonly argv: Map<any>;

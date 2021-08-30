@@ -1,4 +1,5 @@
 const fs = require('fs');
+const escalade = require('escalade/sync');
 
 class ArgParser {
     constructor(arg) {
@@ -36,6 +37,13 @@ class ArgParser {
     help(helpText, ...names) {
         this._helpText = helpText;
         return this.bool('help', ...names);
+    }
+    findVersion(callerPath, ...names) {
+        const packageJsonFile = escalade(callerPath, (dir, fileNames) => fileNames.includes('package.json') && 'package.json');
+        if(packageJsonFile && fs.existsSync(packageJsonFile)) {
+            this.version(packageJsonFile, ...names);
+        }
+        return this;
     }
     version(packageJsonFile, ...names) {
         this._packageJsonFile = packageJsonFile;

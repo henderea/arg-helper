@@ -10,6 +10,9 @@
   "peerDependencies": {
     "arg": "5.x"
   },
+  "dependencies": {
+    "escalade": "^3.1.1"
+  },
   "files": [
     "src/**/*"
   ]
