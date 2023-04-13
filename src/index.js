@@ -57,7 +57,7 @@ class ArgParser {
     let rv = {};
     Object.keys(options).forEach((k) => {
       rv[k] = options[k];
-      if(this._names.hasOwnProperty(k)) {
+      if(Object.prototype.hasOwnProperty.call(this._names, k)) {
         rv[this._names[k]] = options[k];
       }
     });
