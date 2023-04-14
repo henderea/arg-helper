@@ -1,6 +1,6 @@
 {
   "name": "@henderea/arg-helper",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "A utility wrapper around the arg command-line parser",
   "main": "src/index.js",
   "types": "src/index.d.ts",
@@ -31,7 +31,7 @@
   "eslintConfig": {
     "extends": "henderea",
     "rules": {
-        "@typescript-eslint/ban-types": 0
+      "@typescript-eslint/ban-types": 0
     }
   }
 }
