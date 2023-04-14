@@ -1,4 +1,4 @@
-declare function argHelper(arg: any): {argParser: argHelper.argParser};
+declare function argHelper(arg: any): { argParser: argHelper.argParser };
 
 declare namespace argHelper {
     export interface Map<V> {
@@ -19,10 +19,14 @@ declare namespace argHelper {
         findVersion(callerPath: string, ...names: Array<string>): this;
         version(packageJsonFile: string, ...names: Array<string>): this;
         parse(argv?: Array<any> | null): Map<any>;
-        readonly argv: Map<any>;
+        get argv(): Map<any>;
+        static terminalWidth(multiplier?: number): number;
     }
 
-    export type argParser = () => ArgParser;
+    export interface argParser {
+        (): ArgParser;
+        terminalWidth(multiplier?: number): number;
+    }
 }
 
 export = argHelper;

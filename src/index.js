@@ -79,8 +79,18 @@ class ArgParser {
   get argv() {
     return this.parse();
   }
+
+  static terminalWidth(multiplier = 1) {
+    const cols = process.stdout.columns;
+    if(cols) {
+      return Math.round(cols * multiplier);
+    }
+    return undefined;
+  }
 }
 
 module.exports = (arg) => {
-  return { argParser: () => new ArgParser(arg) };
+  const argParser = () => new ArgParser(arg);
+  argParser.terminalWidth = ArgParser.terminalWidth;
+  return { argParser };
 };

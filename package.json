@@ -8,8 +8,8 @@
   "author": "Eric Henderson <henderea@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint src --ext .js",
-    "lint:fix": "eslint --fix src --ext .js"
+    "lint": "eslint src",
+    "lint:fix": "eslint --fix src"
   },
   "peerDependencies": {
     "arg": "5.x"
@@ -29,6 +29,9 @@
     "src/**/*"
   ],
   "eslintConfig": {
-    "extends": "henderea"
+    "extends": "henderea",
+    "rules": {
+        "@typescript-eslint/ban-types": 0
+    }
   }
 }
