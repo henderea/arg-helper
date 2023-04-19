@@ -20,7 +20,6 @@ declare namespace argHelper {
         version(packageJsonFile: string, ...names: Array<string>): this;
         parse(argv?: Array<any> | null): Map<any>;
         get argv(): Map<any>;
-        static terminalWidth(multiplier?: number): number;
     }
 
     export interface argParser {
