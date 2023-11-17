@@ -8,6 +8,7 @@ class ArgParser {
     this._names = {};
     this._helpText = null;
     this._packageJsonFile = null;
+    this._version = null;
   }
 
   flag(name, ...names) {
@@ -49,6 +50,10 @@ class ArgParser {
     this._packageJsonFile = packageJsonFile;
     return this.bool('version', ...names);
   }
+  withVersion(version, ...names) {
+    this._version = version;
+    return this.bool('version', ...names);
+  }
 
   parse(argv = null) {
     let config = { permissive: true };
@@ -65,11 +70,16 @@ class ArgParser {
       console.log(this._helpText);
       process.exit(0);
     }
-    if(rv.version && this._packageJsonFile && fs.existsSync(this._packageJsonFile)) {
-      const packageJson = JSON.parse(fs.readFileSync(this._packageJsonFile));
-      const version = packageJson.version;
-      if(version) {
-        console.log(version);
+    if(rv.version) {
+      if(this._packageJsonFile && fs.existsSync(this._packageJsonFile)) {
+        const packageJson = JSON.parse(fs.readFileSync(this._packageJsonFile));
+        const version = packageJson.version;
+        if(version) {
+          console.log(version);
+          process.exit(0);
+        }
+      } else if(this._version) {
+        console.log(this._version);
         process.exit(0);
       }
     }

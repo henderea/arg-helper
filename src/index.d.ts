@@ -18,6 +18,7 @@ declare namespace argHelper {
         helpText(helpText: string, ...names: Array<string>): this;
         findVersion(callerPath: string, ...names: Array<string>): this;
         version(packageJsonFile: string, ...names: Array<string>): this;
+        withVersion(version: string, ...names: Array<string>): this;
         parse(argv?: Array<any> | null): Map<any>;
         get argv(): Map<any>;
     }
